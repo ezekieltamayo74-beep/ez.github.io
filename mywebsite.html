@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jenna Portfolio</title>
+  <style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Variables */
+    :root {
+      --blue: #2979ff;
+      --blue-light: #559dff;
+      --pink: #f06292;
+      --dark-bg: #0b1636;
+      --dark-bg2: #06132a;
+      --white: #fff;
+      --text-primary: #e2e7fc;
+      --text-secondary: #aabcff;
+      --border-radius: 12px;
+      --transition: 0.3s ease;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--blue-light);
+    }
+
+    /* Animated Background with floating circles */
+    .animated-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #0b1636, #06132a);
+      overflow: hidden;
+    }
+
+    .animated-bg span {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      background: rgba(41, 121, 255, 0.2);
+      animation: float 20s linear infinite;
+      opacity: 0.7;
+      box-shadow: 0 0 10px var(--blue);
+      filter: drop-shadow(0 0 5px var(--blue));
+    }
+
+    /* Different sizes and positions */
+    .animated-bg span:nth-child(1) {
+      top: 10%;
+      left: 15%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+    .animated-bg span:nth-child(2) {
+      top: 50%;
+      left: 80%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 5s;
+      animation-duration: 18s;
+    }
+    .animated-bg span:nth-child(3) {
+      top: 75%;
+      left: 30%;
+      width: 40px;
+      height: 40px;
+      animation-delay: 3s;
+      animation-duration: 22s;
+    }
+    .animated-bg span:nth-child(4) {
+      top: 30%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      animation-delay: 6s;
+      animation-duration: 30s;
+    }
+    .animated-bg span:nth-child(5) {
+      top: 80%;
+      left: 70%;
+      width: 55px;
+      height: 55px;
+      animation-delay: 9s;
+      animation-duration: 24s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+      }
+      50% {
+        transform: translateY(-30px) translateX(20px) scale(1.1);
+      }
+      100% {
+        transform: translateY(0) translateX(0) scale(1);
+      }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      padding: 1rem 2rem;
+      margin: 0 auto;
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: transparent;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: 1.5px;
+    }
+
+    nav .logo .icon {
+      background-color: var(--blue);
+      height: 2rem;
+      width: 2rem;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.2rem;
+      user-select: none;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    nav ul {
+      display: flex;
+      list-style-type: none;
+      gap: 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      padding-bottom: 4px;
+      transition: border-color 0.2s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: var(--white);
+      border-bottom: 2px solid var(--white);
+    }
+
+    nav .btn-talk {
+      background: var(--blue);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+      font-size: 0.9rem;
+    }
+
+    nav .btn-talk:hover {
+      background-color: var(--blue-light);
+    }
+
+    /* SECTION 1: Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(255 255 255 / 0.1);
+    }
+
+    .hero .hero-left {
+      flex: 1;
+      animation: fadeInLeft 1s ease forwards;
+      opacity: 0;
+    }
+
+    .hero .hero-left .small-label {
+      background-color: var(--blue);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: 0.2rem 0.8rem;
+      display: inline-block;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+      user-select: none;
+      animation: fadeInLeft 1s ease forwards;
+      animation-delay: 0.1s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .hero .hero-left h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      line-height: 3.5rem;
+      margin-bottom: 0.5rem;
+      animation: fadeInLeft 1s ease forwards;
+      animation-delay: 0.3s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .hero .hero-left h1 .highlight {
+      color: var(--blue);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      animation: colorChange 3s linear infinite alternate;
+      display: inline-block;
+    }
+
+    .hero .hero-left p {
+      color: #cfd7ffcc;
+      font-size: 1rem;
+      line-height: 1.6rem;
+      margin-bottom: 1.5rem;
+      max-width: 400px;
+      animation: fadeInLeft 1s ease forwards;
+      animation-delay: 0.5s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .hero .hero-left .btns {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hero .hero-left .btn-primary {
+      padding: 0.5rem 1.5rem;
+      background-color: var(--blue);
+      color: white;
+      border-radius: 30px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+      animation: fadeInLeft 1s ease forwards;
+      animation-delay: 0.7s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero .hero-left .btn-primary:hover {
+      background-color: var(--blue-light);
+    }
+
+    .hero .hero-left .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-left: 1rem;
+      animation: fadeInLeft 1s ease forwards;
+      animation-delay: 0.9s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .hero .hero-left .social-icons a {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--blue);
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .hero .hero-left .social-icons a:hover {
+      background-color: var(--pink);
+      border-color: white;
+    }
+
+    /* Animate icons with bounce */
+    .hero .hero-left .social-icons a:nth-child(1) {
+      animation: bounce 2s infinite ease-in-out;
+    }
+    .hero .hero-left .social-icons a:nth-child(2) {
+      animation: bounce 2s infinite ease-in-out 0.2s;
+    }
+    .hero .hero-left .social-icons a:nth-child(3) {
+      animation: bounce 2s infinite ease-in-out 0.4s;
+    }
+
+    /* Hero Right: Image */
+    .hero .hero-right {
+      flex: 1;
+      position: relative;
+      animation: fadeInRight 1s ease forwards;
+      opacity: 0;
+    }
+
+    .hero .hero-right img {
+      width: 300px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid rgba(255 255 255 / 0.15);
+      box-shadow: 0 0 15px var(--blue);
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .hero .hero-right img:hover {
+      transform: scale(1.05) rotate(3deg);
+    }
+
+    /* Circular lines behind image */
+    .hero .hero-right .circle-lines {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border-top: 2px solid var(--blue);
+      border-bottom: 2px solid var(--blue);
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      transform: translate(-50%, -50%);
+      animation: rotateCircle 10s linear infinite;
+      z-index: 1;
+    }
+
+    /* SECTION 2: About */
+    .about {
+      display: flex;
+      gap: 3rem;
+      margin: 4rem 0;
+      align-items: center;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(255 255 255 / 0.1);
+    }
+
+    .about .photo-container {
+      flex: 1;
+      position: relative;
+      animation: fadeInLeft 1s ease forwards;
+      opacity: 0;
+    }
+
+    .about .photo-container img {
+      width: 320px;
+      border-radius: 20px;
+      border: 1px solid rgba(255 255 255 / 0.1);
+      background: var(--dark-bg2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
+      object-fit: cover;
+    }
+
+    .about .photo-shadow {
+      position: absolute;
+      bottom: 15px;
+      right: 10px;
+      width: 320px;
+      height: 380px;
+      background: linear-gradient(135deg, rgba(41,121,255, 0.25), transparent);
+      border-radius: 20px;
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0.5;
+      animation: pulseShadow 4s ease-in-out infinite;
+    }
+
+    .about .content {
+      flex: 1;
+      animation: fadeInRight 1s ease forwards;
+      opacity: 0;
+    }
+
+    .about .small-label {
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      background-color: var(--blue);
+      border-radius: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+      user-select: none;
+    }
+
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .about h2 .highlight {
+      color: var(--blue);
+    }
+
+    .about p {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: #cfd7ffcc;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    /* Stats cards */
+    .stats {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .stat {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: var(--border-radius);
+      padding: 1rem 1.5rem;
+      flex: 1;
+      text-align: center;
+      cursor: default;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 8px rgba(41,121,255,0.4);
+    }
+
+    .stat:hover {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 0 15px var(--blue);
+    }
+
+    .stat .number {
+      font-weight: 700;
+      font-size: 1.7rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat .label {
+      opacity: 0.8;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .about .btn-primary {
+      padding: 0.5rem 1.5rem;
+      background-color: var(--blue);
+      color: white;
+      border-radius: 30px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .about .btn-primary:hover {
+      background-color: var(--blue-light);
+    }
+
+    /* SECTION 3: Recent Projects */
+    .projects-section {
+      margin: 5rem 0 3rem 0;
+    }
+
+    .projects-section .section-header {
+      margin-bottom: 2rem;
+      user-select: none;
+    }
+
+    .projects-section .section-header span {
+      font-size: 0.75rem;
+      background-color: var(--blue);
+      padding: 0.2rem 0.7rem;
+      border-radius: 5px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .projects-section h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .projects-list {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+
+    /* Scrollbar styling */
+    .projects-list::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .projects-list::-webkit-scrollbar-track {
+      background: #06132a;
+      border-radius: 4px;
+    }
+
+    .projects-list::-webkit-scrollbar-thumb {
+      background: var(--blue);
+      border-radius: 4px;
+    }
+
+    .project-card {
+      flex: 0 0 280px;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 12px rgb(0 0 0 / 0.15);
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgb(41 121 255 / 0.7);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+    }
+
+    .project-card .content {
+      padding: 1rem;
+    }
+
+    .project-card .content h3 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: #000;
+    }
+
+    .project-card .content p {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card .arrow-circle {
+      background: var(--blue);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      font-size: 1.2rem;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+
+    .project-card .arrow-circle:hover {
+      background: var(--blue-light);
+    }
+
+    /* SECTION 4: Services */
+    .services-section {
+      margin: 5rem 0 3rem 0;
+    }
+
+    .services-section .section-header {
+      margin-bottom: 2rem;
+      user-select: none;
+    }
+
+    .services-section .section-header span {
+      font-size: 0.75rem;
+      background-color: var(--blue);
+      padding: 0.2rem 0.7rem;
+      border-radius: 5px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .services-section h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .services-list {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .service-card {
+      background: linear-gradient(160deg, #06132a 0%, #0b1636 100%);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      width: 23%;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 2px 15px rgb(0 0 0 / 0.3);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      background: var(--blue);
+      box-shadow: 0 6px 20px var(--blue);
+      color: white;
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--blue);
+      border-radius: 7px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 0 8px var(--blue);
+    }
+
+    .service-card:hover .service-icon {
+      background-color: var(--pink);
+      box-shadow: 0 0 12px var(--pink);
+    }
+
+    .service-card h3 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      line-height: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .stars {
+      color: #fbc531;
+      font-size: 0.95rem;
+    }
+
+    /* SECTION 5: Contact */
+    .contact-section {
+      display: flex;
+      gap: 4rem;
+      margin: 4rem 0 6rem 0;
+      align-items: flex-start;
+    }
+
+    .contact-info {
+      flex: 1;
+      animation: fadeInLeft 1s ease forwards;
+      opacity: 0;
+    }
+
+    .contact-info img {
+      width: 240px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid rgba(255 255 255 / 0.15);
+      box-shadow: 0 0 20px var(--blue);
+      margin-bottom: 2rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 1rem;
+      user-select: none;
+      font-size: 0.9rem;
+      color: #cfd7ffcc;
+      font-weight: 500;
+    }
+
+    .contact-info .email,
+    .contact-info .phone {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    /* Social icons small */
+    .contact-info .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .contact-info .social-icons a {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--blue);
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .contact-info .social-icons a:hover {
+      background-color: var(--pink);
+      border-color: white;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      flex: 2;
+      animation: fadeInRight 1s ease forwards;
+      opacity: 0;
+    }
+
+    .contact-form h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .contact-form p {
+      color: #cfd7ffcc;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      user-select: none;
+      color: white;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #2d3e7e;
+      background-color: #06203d;
+      color: white;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 6px var(--blue);
+      background-color: #0b224f;
+    }
+
+    .btn-submit {
+      display: inline-block;
+      width: 100%;
+      padding: 0.8rem;
+      background-color: var(--blue);
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--blue-light);
+    }
+
+    /* Animations */
+    @keyframes fadeInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+    }
+
+    @keyframes fadeInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes rotateCircle {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    @keyframes colorChange {
+      0% {
+        color: var(--blue);
+      }
+      50% {
+        color: var(--pink);
+      }
+      100% {
+        color: var(--blue);
+      }
+    }
+
+    @keyframes pulseShadow {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 0.8;
+        filter: blur(25px);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero, .about, .contact-section {
+        flex-direction: column;
+      }
+
+      .hero .hero-left, .hero .hero-right,
+      .about .photo-container, .about .content,
+      .contact-section .contact-info, .contact-section .contact-form {
+        width: 100%;
+        text-align: center;
+      }
+
+      .about .photo-shadow {
+        display: none;
+      }
+
+      .services-list {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+
+      .service-card {
+        width: 70%;
+        min-width: 280px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        display: none;
+      }
+
+      nav {
+        justify-content: space-between;
+      }
+
+      .projects-list {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+    }
+  </style>
+  <!-- FontAwesome for Icons -->
+  <script src="https://kit.fontawesome.com/1c93e9b95f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="animated-bg">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav>
+    <div class="logo">
+      <div class="icon">t</div> JENNA
+    </div>
+    <ul>
+      <li><a href="#" class="active">HOME</a></li>
+      <li><a href="#about">ABOUT ME</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#services">SERVICES</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <button class="btn-talk">LET'S TALK</button>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <div class="small-label">JENNA ORTEGA</div>
+        <h1>HAY! I'M JENNA <br /><span class="highlight">I'M A DE</span></h1>
+        <p>
+          Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing.
+          Indulgence way everything joy alteration boisterous the attachment.
+        </p>
+        <div class="btns">
+          <button class="btn-primary">GET IN TOUCH &rarr;</button>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="273de22c-71a7-4f69-b8e3-90739370402f.jpg" alt="Jenna" />
+        <div class="circle-lines"></div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="photo-container">
+        <img src="https://i.ibb.co/L1QxZyN/jenna1.png" alt="Jenna About" />
+        <div class="photo-shadow"></div>
+      </div>
+      <div class="content">
+        <div class="small-label">ABOUT US</div>
+        <h2>I AM AVAILABLE FOR <span class="highlight">UI UX DESIGN</span> PROJECTS</h2>
+        <p>
+          The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+          Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced 
+          in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <div class="number">280+</div>
+            <div class="label">Google Review</div>
+          </div>
+          <div class="stat">
+            <div class="number">15+</div>
+            <div class="label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="number">49+</div>
+            <div class="label">Award Winning</div>
+          </div>
+        </div>
+        <br />
+        <button class="btn-primary">GET IN TOUCH &rarr;</button>
+      </div>
+    </section>
+
+    <!-- Recent Projects Section -->
+    <section class="projects-section" id="projects">
+      <div class="section-header">
+        <span>MY WORK</span>
+        <h2>RECENT PROJECT</h2>
+      </div>
+      <div class="projects-list">
+        <div class="project-card">
+          <img src="https://i.ibb.co/h8R1nkv/project1.jpg" alt="Project 1" />
+          <div class="content">
+            <h3>Website Design</h3>
+            <p>Web Design, App Design</p>
+          </div>
+          <div class="arrow-circle">&rarr;</div>
+        </div>
+        <div class="project-card">
+          <img src="https://i.ibb.co/Bjy2f68/project2.jpg" alt="Project 2" />
+          <div class="content">
+            <h3>Website Design</h3>
+            <p>Web Design, App Design</p>
+          </div>
+          <div class="arrow-circle">&rarr;</div>
+        </div>
+        <div class="project-card">
+          <img src="https://i.ibb.co/j5qTBv8/project3.jpg" alt="Project 3" />
+          <div class="content">
+            <h3>Dashboard Design</h3>
+            <p>Web Design, App Design</p>
+          </div>
+          <div class="arrow-circle">&rarr;</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+      <div class="section-header">
+        <span>SERVICES</span>
+        <h2>DESIGN <span class="highlight">SERVICES</span> I AM PROVIDING</h2>
+      </div>
+      <div class="services-list">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-pencil-alt"></i></div>
+          <h3>Website Design</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-code"></i></div>
+          <h3>Website Design</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+          <div class="stars">★★★★☆</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+          <h3>SEO Marketing</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3>Graphic Design</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+          <div class="stars">★★★★☆</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="contact-info">
+        <img src="https://i.ibb.co/L1QxZyN/jenna1.png" alt="Jenna Contact" />
+        <p>WRITE AN E-MAIL</p>
+        <p class="email">sample@domain.com</p>
+        <p>WRITE AN E-MAIL</p>
+        <p class="phone">+044 9696 9696 3636</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <form class="contact-form" action="#" method="POST">
+        <h2>Let's Discuss Your Project</h2>
+        <p>Always available for freelancing if the right project comes along. Feel free to contact me.</p>
+        <div class="form-group">
+          <label for="name">YOUR NAME</label>
+          <input id="name" type="text" name="name" placeholder="Name *" required />
+        </div>
+        <div class="form-group">
+          <label for="email">YOUR EMAIL</label>
+          <input id="email" type="email" name="email" placeholder="Email *" required />
+        </div>
+        <div class="form-group">
+          <label for="subject">SUBJECT</label>
+          <input id="subject" type="text" name="subject" placeholder="Subject *" required />
+        </div>
+        <div class="form-group">
+          <label for="message">YOUR MESSAGE</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message *" required></textarea>
+        </div>
+        <button class="btn-submit" type="submit">SEND MESSAGE</button>
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>
