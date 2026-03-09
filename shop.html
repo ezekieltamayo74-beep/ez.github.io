@@ -1,0 +1,188 @@
+<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comfort in Every Step</title>
+  <link rel="icon" href="shoe-icon.png">
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* BACK BUTTON */
+    .back-btn-container {
+      margin: 1rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #7c7a7a;
+    }
+
+    /* HEADER */
+    .split-header {
+      width: 100%;
+      height: 200px;
+      background: #f77fb3; 
+      background: url('maxresdefault.jpg') no-repeat center center/cover;
+        
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .split-header h1 {
+      font-size: 3rem;
+      color: #f60bda; 
+      margin: 0;
+    }
+
+    /* SHOE SECTIONS */
+    .shoe-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      gap: 2rem;
+      background: #e44e87;
+      margin: 1rem auto;
+      max-width: 1000px;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateX(100px);
+      transition: all 1s ease;
+    }
+
+    
+    .shoe-section.left {
+      flex-direction: row-reverse;
+      transform: translateX(-100px);
+    }
+
+    .shoe-section img {
+      width: 220px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .shoe-info {
+      flex: 1;
+    }
+
+    .shoe-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: #222;
+    }
+
+    .shoe-info p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #2c2c2c;
+      color: #fff;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="split-header">
+    <h1></h1>
+  </header>
+
+  <!-- BACK BUTTON -->
+  <div class="back-btn-container">
+    <a href="Tops collection.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+  </div>
+
+  <!-- FIVE SHOE SECTIONS -->
+  <section class="shoe-section right">
+    <img src="649fadac5740996403406c88fb8f8bfe.jpg" alt="Sugared Grapes Top">
+    <div class="shoe-info">
+      <h2>Sugared Grapes Top</h2>
+     
+    </div>
+  </section>
+
+  <section class="shoe-section left">
+    <img src="backless.jpg" alt="Backless Loss Top">
+    <div class="shoe-info">
+      <h2>Backless Loss Top</h2>
+    
+    </div>
+  </section>
+
+  <section class="shoe-section right">
+    <img src="Jual.jpg" alt="Jual Atasan Crop Top">
+    <div class="shoe-info">
+      <h2>Jual Atasan Crop Top</h2>
+      
+    </div>
+  </section>
+
+  <section class="shoe-section left">
+    <img src="Carousell.jpg" alt="Carousell Korean Tops">
+    <div class="shoe-info">
+      <h2>Carousell Korean Tops</h2>
+      
+    </div>
+  </section>
+
+  <section class="shoe-section right">
+    <img src="Spring.jpg" alt="Spring Loose Korean Tops">
+    <div class="shoe-info">
+      <h2>Spring Loose Korean Tops</h2>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 ShoeApp. Designed by PANYANG</p>
+  </footer>
+
+  <!-- ANIMATION ON SCROLL -->
+  <script>
+    const sections = document.querySelectorAll('.shoe-section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateX(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
+</body>
+</html>
